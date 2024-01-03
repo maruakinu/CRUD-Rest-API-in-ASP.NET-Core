@@ -12,9 +12,9 @@ namespace MusicManagementSystem.Models
         public string Gender { get; set; }
 
         //This will create a connection between Artist and Album into one to many relationship
-        public ICollection<Album> Albums { get; set;}
+        public ICollection<Album>? Albums { get; set;}
 
         //This will create a connection between Artist and Song into one to many relationship
-        public ICollection<Song> Songs { get; set; }
+        public ICollection<Song>? Songs { get; set; }
     }
 }
