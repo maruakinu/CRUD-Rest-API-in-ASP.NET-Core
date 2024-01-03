@@ -14,6 +14,7 @@ namespace MusicManagementSystem.Models
         public int ArtistId { get; set; }
 
         //This will create a connection between Album and Song into one to many relationship
-        public ICollection<Song> Songs { get; set; }
+        //In one album there are a lot of songs
+        public ICollection<Song>? Songs { get; set; }
     }
 }
