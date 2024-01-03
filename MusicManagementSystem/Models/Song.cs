@@ -15,5 +15,9 @@ namespace MusicManagementSystem.Models
 
         [Required(ErrorMessage = "Duration is Required")]
         public string Duration { get; set; }
+
+        public int ArtistId { get; set; }
+
+        public int? AlbumId { get; set; }
     }
 }
