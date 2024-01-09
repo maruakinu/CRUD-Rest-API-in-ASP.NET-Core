@@ -12,6 +12,7 @@ namespace MusicManagementSystem.Controllers
     {
         private ApiDbContext _dbContext;
 
+        //Making a constructor and initialize the database
         public ArtistsController(ApiDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -19,6 +20,7 @@ namespace MusicManagementSystem.Controllers
 
 
         // POST api/<ArtistController>
+        //This will add data from server to database that associates with the model
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Artist artist)
         {

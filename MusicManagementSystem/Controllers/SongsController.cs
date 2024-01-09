@@ -13,6 +13,7 @@ namespace MusicManagementSystem.Controllers
     {
         private ApiDbContext _dbContext;
 
+        //Making a constructor and initialize the database
         public SongsController(ApiDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -20,6 +21,7 @@ namespace MusicManagementSystem.Controllers
 
 
         // POST api/<ArtistController>
+        //This will add data from server to database that associates with the model
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Song song)
         {
@@ -28,7 +30,8 @@ namespace MusicManagementSystem.Controllers
             return StatusCode(StatusCodes.Status201Created);
         }
 
-        //This has a pagination
+        //This will get all songs and has a pagination
+        //Page size is initialized by 5 and Page number is 1
         [HttpGet]
         public async Task<IActionResult> GetAllSongs(int? pageNumber, int? pageSize)
         {
@@ -61,6 +64,8 @@ namespace MusicManagementSystem.Controllers
         //       return Ok(songs);
         //   }
 
+
+        //This will search a song depending on the Title
 
         [HttpGet("[action]")]
         public async Task<IActionResult> SearchSongs(string query)

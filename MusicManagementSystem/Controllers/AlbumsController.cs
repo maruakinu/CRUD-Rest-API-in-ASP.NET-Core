@@ -12,6 +12,7 @@ namespace MusicManagementSystem.Controllers
     {
         private ApiDbContext _dbContext;
 
+        //Making a constructor and initialize the database
         public AlbumsController(ApiDbContext dbContext)
         {
             _dbContext = dbContext;
@@ -19,6 +20,7 @@ namespace MusicManagementSystem.Controllers
 
 
         // POST api/<AlbumsController>
+        //This will add data from server to database that associates with the model
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Album album)
         {
@@ -27,6 +29,7 @@ namespace MusicManagementSystem.Controllers
             return StatusCode(StatusCodes.Status201Created);
         }
 
+        //This will get all albums
         [HttpGet]
         public async Task<IActionResult> GetAlbums()
         {
@@ -41,6 +44,8 @@ namespace MusicManagementSystem.Controllers
             return Ok(albums);
         }
 
+
+        //This will get the specific details of the album by using ID
         [HttpGet("[action]")]
 
         public async Task<IActionResult> AlbumDetails(int albumId)
