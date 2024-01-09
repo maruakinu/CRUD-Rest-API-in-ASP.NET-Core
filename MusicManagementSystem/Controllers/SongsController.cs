@@ -25,10 +25,18 @@ namespace MusicManagementSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Song song)
         {
-            await _dbContext.Songs.AddAsync(song);
-            await _dbContext.SaveChangesAsync();
-            return StatusCode(StatusCodes.Status201Created);
+            if (song == null)
+            {
+                throw new ArgumentNullException(nameof(song));
+            }else
+            {
+                await _dbContext.Songs.AddAsync(song);
+                await _dbContext.SaveChangesAsync();
+                return StatusCode(StatusCodes.Status201Created);
+            }
+            
         }
+
 
         //This will get all songs and has a pagination
         //Page size is initialized by 5 and Page number is 1

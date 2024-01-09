@@ -24,9 +24,17 @@ namespace MusicManagementSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Album album)
         {
-            await _dbContext.Albums.AddAsync(album);
-            await _dbContext.SaveChangesAsync();
-            return StatusCode(StatusCodes.Status201Created);
+            if (album == null)
+            {
+                throw new ArgumentNullException(nameof(album));
+            }
+            else
+            {
+                await _dbContext.Albums.AddAsync(album);
+                await _dbContext.SaveChangesAsync();
+                return StatusCode(StatusCodes.Status201Created);
+            }
+            
         }
 
         //This will get all albums

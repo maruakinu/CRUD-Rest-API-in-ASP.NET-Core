@@ -24,9 +24,16 @@ namespace MusicManagementSystem.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Artist artist)
         {
-            await _dbContext.Artists.AddAsync(artist);
-            await _dbContext.SaveChangesAsync();
-            return StatusCode(StatusCodes.Status201Created);
+            if (artist == null)
+            {
+                throw new ArgumentNullException(nameof(artist));
+            }else
+            {
+                await _dbContext.Artists.AddAsync(artist);
+                await _dbContext.SaveChangesAsync();
+                return StatusCode(StatusCodes.Status201Created);
+            }
+           
         }
 
 
